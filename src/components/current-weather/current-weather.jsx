@@ -1,6 +1,6 @@
 import "./current-weather.css";
 
-export function CurrentWeather() {
+export function CurrentWeather({data}) {
   return (
     <div className="weather">
       <div className="top">
