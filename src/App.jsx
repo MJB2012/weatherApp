@@ -13,13 +13,13 @@ export function App() {
     const [lat, lon] = searchData.value.split(" ");
 
     const currentWeatherFetch = fetch(
-      `${WEATHER_API_URL}weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
+      `${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
     );
-    const forecastWeatherFetch = fetch(
-      `${WEATHER_API_URL}weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
+    const forecastFetch = fetch(
+      `${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
     );
 
-    Promise.all([forecastWeatherFetch, currentWeatherFetch])
+    Promise.all([currentWeatherFetch, forecastFetch])
       .then(async (response) => {
         const weatherResponse = await response[0].json();
         const forecastResponse = await response[1].json();
@@ -27,15 +27,15 @@ export function App() {
         setCurrentWeather({ city: searchData.label, ...weatherResponse });
         setForecast({ city: searchData.label, ...forecastResponse });
       })
-      .catch((err) => console.log(err));
+      .catch(console.log);
   };
-  console.log(currentWeather);
-  console.log(forecast);
+
   return (
     <div className="container">
       <Search onSearchChange={handleOnSearchChange} />
-      {currentWeather && <CurrentWeather data={ currentWeather } />}
-      {forecast && <Forecast data={ forecast }/>}
+      {currentWeather &&<CurrentWeather data={currentWeather} />}
+      {forecast &&<Forecast data={forecast} />}
+      {/* {forecast && <Forecast data={forecast} />} */}
     </div>
   );
 }
