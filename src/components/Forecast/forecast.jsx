@@ -32,7 +32,38 @@ export function Forecast({data}) {
                 </div>
                 </AccordionItemButton>
             </AccordionItemHeading>
-            <AccordionItemPanel></AccordionItemPanel>
+            <AccordionItemPanel>
+                <div className="details-grid">
+                    <div className="details-grid-item">
+                        <label>Pressure</label>
+                        <label className="">{item.main.pressure}</label>
+                    </div>
+                    <div className="details-grid-item">
+                        <label>Humidity</label>
+                        <label>{item.main.humidity}%</label>
+                    </div>
+                    <div className="details-grid-item">
+                        <label>Pressure</label>
+                        <label>{item.main.pressure}hPa</label>
+                    </div>
+                    <div className="details-grid-item">
+                        <label>Clouds</label>
+                        <label>{item.clouds.all}%</label>
+                    </div>
+                    <div className="details-grid-item">
+                        <label>Wind Speed</label>
+                        <label>{item.wind.speed}m/s</label>
+                    </div>
+                    <div className="details-grid-item">
+                        <label>Sea Level</label>
+                        <label>{item.main.sea_level}m</label>
+                    </div>
+                    <div className="details-grid-item">
+                        <label>Feels like</label>
+                        <label>{item.main.feels_like}°C</label>
+                    </div>
+                </div>
+            </AccordionItemPanel>
           </AccordionItem>
         ))}
       </Accordion> 
