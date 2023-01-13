@@ -34,10 +34,7 @@ export function Forecast({data}) {
             </AccordionItemHeading>
             <AccordionItemPanel>
                 <div className="details-grid">
-                    <div className="details-grid-item">
-                        <label>Pressure</label>
-                        <label className="">{item.main.pressure}</label>
-                    </div>
+                   
                     <div className="details-grid-item">
                         <label>Humidity</label>
                         <label>{item.main.humidity}%</label>
